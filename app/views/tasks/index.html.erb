@@ -1,10 +1,19 @@
-<h1>My tasks</h1>
-<ul>
-<% @tasks.each do |task| %>
-<% if task.completed %>
-<li><i class="far fa-check-square"></i> <%= link_to task.title, task_path(task) %></li>
-<% else %>
-<li><i class="far fa-square"></i> <%= link_to task.title, task_path(task) %></li>
-<% end %>
-<% end %>
-</ul>
+<div class="container pt-4 text-left d-flex justify-content-center">
+  <div class="card p-4">
+    <h1 class="">My tasks</h1>
+    <ul class="border-bottom pl-0">
+      <% @tasks.each do |task| %>
+        <% if task.completed %>
+          <li><i class="far fa-check-square"></i> <%= link_to task.title, task_path(task) %>-
+            <%= link_to "<i class='fas fa-trash'></i>".html_safe, task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% else %>
+          <li><i class="far fa-square"></i> <%= link_to task.title, task_path(task) %>-
+            <%= link_to "<i class='fas fa-trash'></i>".html_safe, task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <div class="">
+     <i class="fas fa-plus-square"></i> <%= link_to 'Add task to list', new_task_path %>
+   </div>
+ </div>
+</div>
